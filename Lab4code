@@ -1,0 +1,136 @@
+#include <iostream>
+using namespace std;
+
+class CCylinder
+{
+private:
+	float m_nRadius;
+	float m_nHight;
+
+public:
+	CCylinder(float ValueRadius, float ValueHight)
+	{
+
+		if (ValueHight >= 1.0 && ValueHight <= 50.0)
+		{
+			m_nHight = ValueHight;
+		}
+		if (ValueHight <= 1.0 )
+		{
+			m_nHight = 1;
+		}
+		if ( ValueHight >= 50.0)
+		{
+			m_nHight = 50;
+		}
+		if (ValueRadius >= 1.0 && ValueRadius <= 50.0)
+		{
+			m_nRadius = ValueRadius;
+		}
+		if (ValueRadius <= 1.0)
+		{
+			m_nRadius = 1;
+		}
+		if (ValueRadius >= 50.0)
+		{
+			m_nRadius = 50;
+		}
+	}
+	CCylinder()
+	{
+		m_nHight = 10;
+		m_nRadius = 10;
+	}
+	float GetRadius()
+	{
+		return m_nRadius;
+	}
+	float GetHigt()
+	{
+		return m_nHight;
+	}
+	void SetRadius(float ValueRadius)
+	{
+		if (ValueRadius >= 1.0 && ValueRadius <= 50.0)
+		{
+			m_nRadius = ValueRadius;
+		}
+	}
+	void SetHight(float ValueHight)
+	{
+		if (ValueHight >= 1.0 && ValueHight <= 50.0)
+		{
+			m_nHight = ValueHight;
+		}
+	}
+	float fnVolume()
+	{
+		return (m_nHight * ((m_nRadius * m_nRadius) * 3.14));
+	}
+	float fnArea()
+	{
+		return ((m_nRadius * 2 * 3.14) * m_nHight);
+	}
+	float fnRangeThroughHight()
+	{
+		return ((2 * m_nHight) + (4 * m_nRadius));
+	}
+	float fnRangeThroughRadius()
+	{
+		return (2 * 3.14 * m_nRadius);
+	}
+};
+
+int main()
+{
+	float x = 0, y = 0;
+	float area = 0, volume = 0, range = 0;
+	CCylinder First(5, 41);
+
+	y = First.GetHigt();
+	x = First.GetRadius();
+	cout << " X=" << x << " Y=" << y << endl << endl;
+
+	First.SetHight(7);
+	First.SetRadius(37);
+
+	y = First.GetHigt();
+	x = First.GetRadius();
+	cout << "New: " << endl;
+	cout << " X=" << x << " Y=" << y << endl << endl;
+
+	area = First.fnArea();
+	volume = First.fnVolume();
+	cout << " Area=" << area << " Volume=" << volume << endl << endl;
+
+	range = First.fnRangeThroughHight();
+	cout << "Range through hight: " << range << endl;
+	range = First.fnRangeThroughRadius();
+	cout << "Range through radius: " << range << endl;
+	cout << endl;
+
+	CCylinder Second;
+	
+	y = Second.GetHigt();
+	x = Second.GetRadius();
+	cout << " X=" << x << " Y=" << y << endl << endl;
+
+	Second.SetHight(9);
+	Second.SetRadius(25);
+
+	y = Second.GetHigt();
+	x = Second.GetRadius();
+	cout << "New:" << endl;
+	cout << " X=" << x << " Y=" << y << endl << endl;
+
+	area = Second.fnArea();
+	volume = Second.fnVolume();
+	cout << " Area=" << area << " Volume=" << volume << endl << endl;
+
+	range = Second.fnRangeThroughHight();
+	cout << "Range through hight: " << range << endl;
+	range = Second.fnRangeThroughRadius();
+	cout << "Range through radius: " << range << endl;
+
+	return 0;
+}
